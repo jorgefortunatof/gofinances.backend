@@ -4,8 +4,8 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
   JoinColumn,
+  ManyToOne,
 } from 'typeorm';
 import Category from './Category';
 
@@ -18,17 +18,14 @@ class Transaction {
   title: string;
 
   @Column()
-  type: 'income' | 'outcome';
+  type: string;
 
   @Column()
   value: number;
 
-  @Column()
-  category_id: string;
-
-  @ManyToOne(() => Category)
   @JoinColumn({ name: 'category_id' })
-  category: Category;
+  @ManyToOne(() => Category)
+  category_id: string;
 
   @CreateDateColumn()
   created_at: Date;
